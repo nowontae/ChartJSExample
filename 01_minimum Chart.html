@@ -8,7 +8,7 @@
 </head>
 <body>
     <!-- canvas에 그리는 거라 없으면 안됨-->
-    <canvas id="myChart" style="width: 100px;"></canvas>
+    <canvas id="myChart"></canvas>
     
     <!-- Chart를 위한 최소 내용-->
     <script>
@@ -16,7 +16,7 @@
     const myChart = new Chart( document.getElementById('myChart').getContext('2d'), {
         type: 'line', // 'doughnut' 과 'pie'는 요걸로는 안됨 뭔가 더 필요한가봄.
         data: {
-            datasets: [{}],
+            datasets: [{}], //   배열[]안에 {}가 없으면 안된다.
         }
     });
     </script>
