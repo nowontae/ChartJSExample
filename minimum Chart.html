@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>//CDN으로 Chart.js 안하면 쓸수 없음. 무조건 필수</script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+</head>
+<body>
+    <!-- canvas에 그리는 거라 없으면 안됨-->
+    <canvas id="myChart" style="width: 100px;"></canvas>
+    
+    <!-- Chart를 위한 최소 내용-->
+    <script>
+    //Chart를 생성해야함. 생성해야 할때 최소 내용임. 이래야 에러없이 화면에 뭐라도 그려짐
+    const myChart = new Chart( document.getElementById('myChart').getContext('2d'), {
+        type: 'line', // 'doughnut' 과 'pie'는 요걸로는 안됨 뭔가 더 필요한가봄.
+        data: {
+            datasets: [{}],
+        }
+    });
+    </script>
+</body>
+</html>
