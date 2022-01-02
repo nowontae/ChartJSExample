@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>//CDN으로 Chart.js 안하면 쓸수 없음. 무조건 필수</script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+</head>
+<body>
+    <!-- chart 사이즈 관리를 위한 div 영역 설정 후 style로 사이즈 적용-->
+    <div> 
+        <canvas id="myChart" style="width:1000px; height: 250px;"></canvas>
+    </div>
+    
+    <script>
+    const ctx = document.getElementById('myChart').getContext('2d'); 
+    const myChart = new Chart( ctx, {
+        type: 'bar', 
+        data: {
+            labels: ['군생활'],    
+            datasets: [     
+                {    
+                    label: '이병',  
+                    data: [135], 
+                    backgroundColor : 'gray',
+                },
+                {    
+                    label: '일병',  
+                    data: [135], 
+                    backgroundColor : 'red',
+                },
+                {    
+                    label: '상병',  
+                    data: [135], 
+                    backgroundColor : 'blue',
+                },
+                {    
+                    label: '병장',  
+                    data: [135], 
+                    backgroundColor : 'pink',
+                }
+            ],
+        },
+        options: {
+            plugins:{
+                legend: { display: false},
+                datalabels:{
+                    labels:{
+                        label:{
+                            align:'top',
+                            color:'white',
+                            font:{size:30},
+                            formatter: function(value,ctx){
+                                return ctx.dataset.label;
+                            }
+                        },
+                        value:{
+                            align:'bottom',
+                            color:'white',
+                            font:{size:30},
+                            formatter: function(value){
+                                return value+'일';
+                            }
+                        }
+                    }
+                },
+            },
+            responsive:false,
+            indexAxis:'y',
+            scales:{
+                x:{
+                    stacked:true,
+                    ticks: {
+                        callback: function(value, index, ticks) {
+                            return value+'일';
+                        }
+                    }
+                },
+                y:{
+                    stacked:true
+                }
+            }
+        },
+        plugins: [ChartDataLabels]
+    });
+    </script>
+</body>
+</html>
